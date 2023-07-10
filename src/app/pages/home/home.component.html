@@ -1,0 +1,55 @@
+<div class="container">
+  <form autocomplete="off" class="form" [formGroup]="formGroup">
+    <div class="inputContainer animate__animated animate__swing">
+      <span class="p-float-label">
+      <input type="text" pInputText formControlName="name"/>
+      <label for="inputgroup">Nombre de la promoción</label>
+    </span>
+    </div>
+
+    <div class="inputContainer animate__animated animate__swing" *ngIf="nameValue">
+      <span class="p-float-label">
+      <input type="text" pInputText formControlName="description"/>
+      <label for="inputgroup">Descripción de la promoción</label>
+    </span>
+    </div>
+
+    <div class="inputContainer animate__animated animate__swing" *ngIf="descriptionValue">
+      <span class="p-float-label">
+      <input type="text" pInputText pattern="[0-9]+" formControlName="quantityOfScans" pTooltip="Ingresa el numero de veces que sera posible escanear el codigoQr, por ejemplo: 7 = 7 veces."/>
+      <label for="inputgroup">Cantidad de escaneos</label>
+    </span>
+    </div>
+
+    <div class="inputContainer animate__animated animate__swing" *ngIf="quantityOfScansValue">
+      <span class="p-float-label">
+      <p-calendar [minDate]="fechaManana" formControlName="expiration" dateFormat="dd/mm/yy" [appendTo]="'body'" pTooltip="Indica el tiempo que estará disponible la promoción en días, por ejemplo: 7 = 7 días." st></p-calendar>
+      <label for="inputgroup">Tiempo de expiración</label>
+    </span>
+    </div>
+
+    <div class="buttonContainer animate__animated animate__swing" *ngIf="expirationValue">
+      <button pButton type="button" label="Generar código QR" [disabled]="formGroup.invalid || buttonDisabled" class="button" (click)="GenerarQr()"></button>
+    </div>
+  </form>
+
+
+  <div class="ContainerQr" *ngIf="value && value != 'c'">
+    <ngx-qrcode
+    [elementType]="elementType"
+    [errorCorrectionLevel]="correctionLevel"
+    [value]="value"
+    alt="Qr de la promoción"
+    Class="bshadow"
+  ></ngx-qrcode>
+
+  <p-messages severity="info">
+    <ng-template pTemplate>
+        <div class="ml-2">Si desea generar otro codigoQr, haz click en QR APP.</div>
+    </ng-template>
+  </p-messages>
+
+  </div>
+</div>
+
+

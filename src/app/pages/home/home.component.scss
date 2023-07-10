@@ -1,0 +1,74 @@
+.container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 80px;
+}
+
+.inputContainer{
+  width:500px;
+  margin-bottom: 40px;
+}
+
+.buttonContainer{
+  width:500px;
+}
+
+.button{
+  width: 100%;
+}
+
+.bshadow{
+  width: 250px;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+::ng-deep input.p-inputtext, ::ng-deep span.p-inputnumber.p-component,
+ ::ng-deep p-inputnumber.p-element.p-inputwrapper,
+  ::ng-deep p-calendar.p-element.p-inputwrapper.ng-tns-c58-0.ng-untouched.ng-pristine.ng-invalid.ng-star-insertedn,
+   ::ng-deep span{
+  width: 100% !important;
+}
+
+label{
+  font-weight: bold;
+}
+
+.ContainerQr{
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bshadow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(5px 5px 5px #222222);
+  opacity: .5;
+}
+
+::ng-deep p-messages.p-element.ng-tns-c59-0.ng-star-inserted {
+  justify-content: center;
+  display: flex;
+}
+
+
+
+@media only screen and (max-width:552px) {
+  .inputContainer{
+    width:250px;
+  }
+
+  .buttonContainer{
+    width:250px;
+  }
+
+}

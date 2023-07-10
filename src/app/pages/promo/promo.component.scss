@@ -1,0 +1,26 @@
+.reclamar-container{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.center{
+  text-align: center;
+}
+
+::ng-deep .p-card-body{
+  background: gray;
+}
+
+::ng-deep p-card.p-element{
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep .p-card.p-component{
+  width: 800px;
+}
+
+
