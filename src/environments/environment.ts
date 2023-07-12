@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl:'https://aplicacion-tesis.vercel.app/qr/'
+  baseUrl:'https://aplicacion-tesis.vercel.app'
 };
 
 /*
