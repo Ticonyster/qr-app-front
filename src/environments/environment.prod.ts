@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl:'https://aplicacion-tesis.vercel.app/'
+  baseUrl:'https://aplicacion-tesis.vercel.app'
 };

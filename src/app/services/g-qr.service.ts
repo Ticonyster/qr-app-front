@@ -16,7 +16,7 @@ export class GQrService {
   constructor(private http: HttpClient,) { }
 
   postPromotion(body:promotion):Observable<any>{
-    return this.http.post(`${this.baseUrl}generate-qr`, body)
+    return this.http.post(`${this.baseUrl}/qr/generate-qr`, body)
   }
 
   GetById(id:string):Observable<any>{
