@@ -96,7 +96,7 @@ export class HomeComponent implements OnInit {
     let body = this.formGroup.value
     this.value='c'
     this.gQrService.postPromotion(body).subscribe(resp => {
-      this.value = `http://localhost:4200/Promo/${resp._id}`
+      this.value = `https://demo-qr-app-front.vercel.app/Promo/${resp._id}`
       this.blockForm()
       this.buttonDisabled = true
     }, (err)=> {
