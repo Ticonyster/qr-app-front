@@ -1,3 +1,5 @@
+<p class="title" (click)="home()">QR APP</p>
+
 <div class="container">
   <form autocomplete="off" class="form" [formGroup]="formGroup">
     <div class="inputContainer animate__animated animate__swing">
@@ -40,7 +42,6 @@
     [errorCorrectionLevel]="correctionLevel"
     [value]="value"
     alt="Qr de la promoción"
-    Class="bshadow"
   ></ngx-qrcode>
 
   <p-messages severity="info">

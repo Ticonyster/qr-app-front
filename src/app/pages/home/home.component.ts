@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
 import { GQrService } from 'src/app/services/g-qr.service';
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
   expirationValue:boolean = false
   buttonDisabled:boolean = false
 
-  constructor(private formBuilder: FormBuilder, private gQrService:GQrService) {
+  constructor( private formBuilder: FormBuilder, private gQrService:GQrService) {
 
     this.formGroup = this.formBuilder.group(
       {
@@ -57,7 +58,6 @@ export class HomeComponent implements OnInit {
     })
 
     this.formGroup.get('quantityOfScans')?.valueChanges.subscribe( resp => {
-      console.log(resp)
       if(resp > 0) {
         this.quantityOfScansValue = true
       }else {
@@ -76,6 +76,13 @@ export class HomeComponent implements OnInit {
 
   }
 
+  home(){
+    this.value='c'
+    this.formGroup.patchValue({ name:'',description: '', quantityOfScans: '', expiration: '' });
+    this.enableForm()
+    this.buttonDisabled = false
+  }
+
   resetDescription() {
     this.formGroup.patchValue({ description: '' });
   }
@@ -90,6 +97,10 @@ export class HomeComponent implements OnInit {
 
   blockForm(){
     this.formGroup.disable()
+  }
+
+  enableForm(){
+    this.formGroup.enable()
   }
 
   GenerarQr(){

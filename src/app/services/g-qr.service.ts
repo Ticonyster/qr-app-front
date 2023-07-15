@@ -26,6 +26,4 @@ export class GQrService {
   PostById(id:string):Observable<any>{
     return this.http.post(`${this.baseUrl}/qr/${id}/scan`, {})
   }
-
-
 }

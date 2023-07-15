@@ -141,4 +141,8 @@ export class PromoComponent implements OnInit {
     this.document.cookie = cookieName + '=true; expires=' + expirationDate.toUTCString();
   }
 
+  home(){
+    this.router.navigateByUrl('/')
+  }
+
 }
