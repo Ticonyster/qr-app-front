@@ -99,13 +99,13 @@ export class PromoComponent implements OnInit {
     this.gQrService.PostById(id).subscribe(resp=> {
       this.reclamar = false
       this.promo = resp
-      const {name, quantityOfScansLimit, description } = this.promo
+      const {businessName, name, quantityOfScansLimit, description } = this.promo
       Swal.fire({
         icon: 'success',
         title: '¡Muy bien!',
         html:
         `¡Has reclamado la promoción!<br/>` +
-        `Utiliza el siguiente código y dirígete hacia el establecimiento para canjear la promoción: <br/>` +
+        `Utiliza el siguiente código y dirígete hacia el establecimiento ${businessName} para canjear la promoción: <br/>` +
         `Código: ${name} - ${quantityOfScansLimit}<br/>` +
         `Descripción: ${description}<br/>`+
         `<span>Recuerda tomarle capture 😎</span>`,

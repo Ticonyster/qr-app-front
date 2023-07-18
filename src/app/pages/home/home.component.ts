@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   formGroup: FormGroup;
   fechaActual:Date = new Date()
   fechaManana:Date = new Date()
+  businessNameValue:boolean = false
   nameValue:boolean = false
   descriptionValue:boolean = false
   quantityOfScansValue:boolean = false
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit {
 
     this.formGroup = this.formBuilder.group(
       {
+          businessName: [, [Validators.required]],
           name: [, [Validators.required]],
           description: [, [Validators.required]],
           quantityOfScans: [, [Validators.required]],
@@ -38,6 +40,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.fechaManana.setDate(this.fechaActual.getDate() + 1);
+
+    this.formGroup.get('businessName')?.valueChanges.subscribe( resp => {
+      if(resp.trim().length > 0) {
+        this.businessNameValue = true
+      }else {
+        this.businessNameValue = false
+        this.resetName()
+      }
+    })
 
     this.formGroup.get('name')?.valueChanges.subscribe( resp => {
       if(resp.trim().length > 0) {
@@ -58,6 +69,7 @@ export class HomeComponent implements OnInit {
     })
 
     this.formGroup.get('quantityOfScans')?.valueChanges.subscribe( resp => {
+      console.log(resp)
       if(resp > 0) {
         this.quantityOfScansValue = true
       }else {
@@ -78,9 +90,13 @@ export class HomeComponent implements OnInit {
 
   home(){
     this.value='c'
-    this.formGroup.patchValue({ name:'',description: '', quantityOfScans: '', expiration: '' });
+    this.formGroup.patchValue({businessName:'', name:'',description: '', quantityOfScans: '', expiration: '' });
     this.enableForm()
     this.buttonDisabled = false
+  }
+
+  resetName() {
+    this.formGroup.patchValue({ name: '' });
   }
 
   resetDescription() {

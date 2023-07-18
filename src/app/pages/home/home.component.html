@@ -4,9 +4,16 @@
   <form autocomplete="off" class="form" [formGroup]="formGroup">
     <div class="inputContainer animate__animated animate__swing">
       <span class="p-float-label">
+      <input type="text" pInputText formControlName="businessName"/>
+      <label for="inputgroup">Nombre del establecimiento o emprendimiento</label>
+       </span>
+    </div>
+
+    <div class="inputContainer animate__animated animate__swing"  *ngIf="businessNameValue">
+      <span class="p-float-label">
       <input type="text" pInputText formControlName="name"/>
       <label for="inputgroup">Nombre de la promoción</label>
-    </span>
+       </span>
     </div>
 
     <div class="inputContainer animate__animated animate__swing" *ngIf="nameValue">
