@@ -80,7 +80,6 @@ export class HomeComponent implements OnInit {
     })
 
     this.formGroup.get('quantityOfScans')?.valueChanges.subscribe( resp => {
-      console.log(resp)
       if(resp > 0) {
         this.quantityOfScansValue = true
       }else {

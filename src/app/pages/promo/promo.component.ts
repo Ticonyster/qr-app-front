@@ -121,13 +121,11 @@ export class PromoComponent implements OnInit {
         }
       }).then((result) => {
         if (result.dismiss === Swal.DismissReason.timer) {
-        console.log(this.url)
-          this.router.navigateByUrl(this.url)
+        this.redirecToUrl()
         }
 
         if (result.isConfirmed) {
-        console.log(this.url)
-          this.router.navigateByUrl(this.url)
+        this.redirecToUrl()
         }
       })
       this.setLinkVisitedCookie(this.promo.name)
@@ -147,6 +145,10 @@ export class PromoComponent implements OnInit {
 
   home(){
     this.router.navigateByUrl('/')
+  }
+
+  redirecToUrl() {
+    window.location.href = this.url;
   }
 
 }
