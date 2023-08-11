@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   formGroup: FormGroup;
   fechaActual:Date = new Date()
   fechaManana:Date = new Date()
+  urlValue:boolean = false
   businessNameValue:boolean = false
   nameValue:boolean = false
   descriptionValue:boolean = false
@@ -32,6 +33,7 @@ export class HomeComponent implements OnInit {
       {
           businessName: [, [Validators.required]],
           name: [, [Validators.required]],
+          url: [, [Validators.required]],
           description: [, [Validators.required]],
           quantityOfScans: [, [Validators.required]],
           expiration: [, [Validators.required]],
@@ -55,6 +57,15 @@ export class HomeComponent implements OnInit {
         this.nameValue = true
       }else {
         this.nameValue = false
+        this.resetUrl()
+      }
+    })
+
+    this.formGroup.get('url')?.valueChanges.subscribe( resp => {
+      if(resp.trim().length > 0) {
+        this.urlValue = true
+      }else {
+        this.urlValue = false
         this.resetDescription()
       }
     })
@@ -97,6 +108,10 @@ export class HomeComponent implements OnInit {
 
   resetName() {
     this.formGroup.patchValue({ name: '' });
+  }
+
+  resetUrl() {
+    this.formGroup.patchValue({ url: '' });
   }
 
   resetDescription() {

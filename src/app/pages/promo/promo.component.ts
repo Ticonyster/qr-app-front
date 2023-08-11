@@ -17,6 +17,7 @@ export class PromoComponent implements OnInit {
   idPromo!:string
   promo:any
   NotexistPromo:any
+  url:any
 
   linkVisited:boolean = false
   constructor(private gQrService:GQrService, private ActivateRoute: ActivatedRoute, private router:Router,
@@ -40,6 +41,7 @@ export class PromoComponent implements OnInit {
     this.gQrService.GetById(id).subscribe({
       next: (resp) => {
         this.promo = resp
+        this.url = resp.url
         this.linkVisited = this.checkCookieExists(this.promo.name);
         if(this.linkVisited){
           Swal.fire({
@@ -83,7 +85,6 @@ export class PromoComponent implements OnInit {
             popup: 'animate__animated animate__fadeOutUp'
           }
         }).then((result) => {
-          console.log('pasando')
           if (result.dismiss === Swal.DismissReason.timer) {
             this.router.navigateByUrl('/')
           }
@@ -119,11 +120,11 @@ export class PromoComponent implements OnInit {
         }
       }).then((result) => {
         if (result.dismiss === Swal.DismissReason.timer) {
-          this.router.navigateByUrl('/')
+          this.router.navigateByUrl(this.url)
         }
 
         if (result.isConfirmed) {
-          this.router.navigateByUrl('/')
+          this.router.navigateByUrl(this.url)
         }
       })
       this.setLinkVisitedCookie(this.promo.name)

@@ -16,7 +16,14 @@
        </span>
     </div>
 
-    <div class="inputContainer animate__animated animate__swing" *ngIf="nameValue">
+    <div class="inputContainer animate__animated animate__swing"  *ngIf="nameValue">
+      <span class="p-float-label">
+      <input type="text" pInputText formControlName="url" pTooltip="Ingresa la url de tu principal red social"/>
+      <label for="inputgroup">Url</label>
+       </span>
+    </div>
+
+    <div class="inputContainer animate__animated animate__swing" *ngIf="urlValue">
       <span class="p-float-label">
       <input type="text" pInputText formControlName="description"/>
       <label for="inputgroup">Descripción de la promoción</label>
