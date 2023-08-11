@@ -42,6 +42,7 @@ export class PromoComponent implements OnInit {
       next: (resp) => {
         this.promo = resp
         this.url = resp.url
+        console.log(this.url)
         this.linkVisited = this.checkCookieExists(this.promo.name);
         if(this.linkVisited){
           Swal.fire({
@@ -120,10 +121,12 @@ export class PromoComponent implements OnInit {
         }
       }).then((result) => {
         if (result.dismiss === Swal.DismissReason.timer) {
+        console.log(this.url)
           this.router.navigateByUrl(this.url)
         }
 
         if (result.isConfirmed) {
+        console.log(this.url)
           this.router.navigateByUrl(this.url)
         }
       })
